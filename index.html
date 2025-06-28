@@ -5,25 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fragrance World</title>
   <style>
-    body {
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
       font-family: 'Open Sans', sans-serif;
       background-color: #000;
       color: #fff;
     }
 
     header {
-      background-color: #000;
-      color: rgba(1, 204, 255, 0.7);
+      background-color: black;
+      color: #01ccff;
       padding: 1rem 2rem;
-      position: sticky;
-      top: 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: sticky;
+      top: 0;
       z-index: 1000;
       box-shadow: 0 2px 5px rgba(212, 175, 55, 0.2);
-      flex-wrap: wrap;
     }
 
     nav a {
@@ -31,19 +35,10 @@
       margin-left: 1.5rem;
       text-decoration: none;
       font-weight: bold;
-      transition: color 0.3s;
     }
 
     nav a:hover {
-      color: rgba(1, 204, 255, 0.7);
-    }
-
-    h1, h2, h3 {
-      font-family: 'Playfair Display', serif;
-    }
-
-    section {
-      padding: 4rem 2rem;
+      color: #01ccff;
     }
 
     .hero {
@@ -51,77 +46,69 @@
       align-items: center;
       justify-content: center;
       min-height: 450px;
-      padding: 5rem 4vw;
-      background: 
-        linear-gradient(90deg, rgba(1, 204, 255, 0.7), #000),
-        url('p.jpg') right center/cover no-repeat;
+      padding: 4rem 2rem;
+      background: linear-gradient(90deg, rgba(1, 204, 255, 0.7), #000),
+                  url('p.jpg') center/cover no-repeat;
       text-align: center;
-      position: relative;
     }
 
     .hero-content h2 {
-      font-size: 3.5rem;
-      background: linear-gradient(270deg, #000, #fffbe6, rgba(1, 204, 255, 0.7), #000);
-      background-size: 800% 800%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: gradientmove 4s linear infinite;
-      font-weight: bold;
+      font-size: 3rem;
+      color: #fff;
+      margin-bottom: 1rem;
     }
 
     .hero-content p {
-      font-size: 1.5rem;
-      background: linear-gradient(270deg, rgba(1, 204, 255, 0.7), #000, rgba(1, 204, 255, 0.7), #fff);
-      background-size: 800% 800%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: gradientmove 4s linear infinite;
-      font-weight: bold;
+      font-size: 1.2rem;
+      color: #ccc;
     }
 
-    @keyframes gradientmove {
-      0% {background-position:0% 50%;}
-      100% {background-position:100% 50%;}
+    @media (max-width: 900px) {
+      .hero {
+        flex-direction: column;
+        padding: 3rem 1rem;
+      }
+
+      .hero-content h2 {
+        font-size: 2rem;
+      }
+
+      .hero-content p {
+        font-size: 1rem;
+      }
     }
 
     section#produk {
-      background-image: url('ombak.gif');
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
+      padding: 4rem 2rem;
+      background: url('ombak.gif') center/cover no-repeat;
     }
 
     .produk-grid {
       display: flex;
       flex-direction: column;
       gap: 2.5rem;
-      align-items: center;
     }
 
-    .produk-kiri,
-    .produk-kanan {
+    .produk-kiri, .produk-kanan {
       display: flex;
       align-items: center;
       background-color: #1a1a1a;
-      padding: 1.5rem 2rem;
-      width: 900px;
+      padding: 1.5rem;
       border-radius: 16px;
       box-shadow: 0 4px 24px rgba(212,175,55,0.08);
-      margin: 0 auto;
-      justify-content: center;
       transition: transform 0.3s;
     }
 
     .produk-kiri {
-      border-left: 20px solid rgba(1, 153, 254, 0.7);
-      border-bottom: 20px solid rgba(1, 153, 254, 0.7);
-      border-style: groove;
+      flex-direction: row;
+      border-left: 10px solid #01ccff;
+      border-bottom: 10px solid #01ccff;
     }
 
     .produk-kanan {
-      border-right: 20px solid rgba(1, 153, 254, 0.7);
-      border-bottom: 20px solid rgba(1, 153, 254, 0.7);
-      border-style: groove;
+      flex-direction: row-reverse;
+      border-right: 10px solid #01ccff;
+      border-bottom: 10px solid #01ccff;
     }
 
     .produk-img {
@@ -131,88 +118,92 @@
       border-radius: 12px;
       margin: 0 2rem;
       background: #222;
-      box-shadow: 0 2px 12px rgba(212,175,55,0.12);
     }
 
     .produk-notes {
       flex: 1;
-      color: #fff;
-      text-align: left;
     }
 
-    .produk h3 {
+    .produk-notes h3 {
       color: #d4af37;
       margin-bottom: 0.5rem;
     }
 
-    .produk p {
+    .produk-notes p {
       margin: 0.3rem 0;
       font-size: 1rem;
     }
 
-    .footer-fullwidth {
-      width: 100vw;
-      background: #0a1a3a;
-      color: #fff;
-      padding: 3rem 2rem 2rem 2rem;
-      margin-top: 3rem;
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 900px) {
-      .hero {
+    @media (max-width: 768px) {
+      .produk-kiri, .produk-kanan {
         flex-direction: column;
-        padding: 3rem 2vw;
-        background: 
-          linear-gradient(to bottom, rgba(1, 153, 254, 0.7), rgba(0,0,0,0.7)),
-          url('p.jpg') center center/cover no-repeat;
-        border-radius: 0 0 24px 24px;
-      }
-
-      .hero-content h2 {
-        font-size: 2rem;
-      }
-
-      .hero-content p {
-        font-size: 1.2rem;
-      }
-
-      .produk-kiri,
-      .produk-kanan {
-        flex-direction: column;
-        width: 90vw;
-        padding: 1.2rem;
-        border-left: none;
-        border-right: none;
-        border-style: solid;
-        border-width: 4px;
-        border-color: rgba(1, 153, 254, 0.7);
+        text-align: center;
       }
 
       .produk-img {
         margin: 0 0 1rem 0;
-        width: 100%;
-        max-width: 300px;
+        width: 90vw;
+        max-width: 320px;
         height: auto;
       }
+    }
 
-      .produk-notes {
-        text-align: center;
-      }
+    section#about {
+      background-color: #111;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
 
-      header {
-        flex-direction: column;
-        text-align: center;
-      }
+    section#about p {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.2rem;
+      line-height: 1.6;
+    }
 
-      nav {
-        margin-top: 1rem;
-      }
+    .footer-fullwidth {
+      background: #0a1a3a;
+      color: #fff;
+      padding: 3rem 2rem;
+      margin-top: 3rem;
+    }
 
-      nav a {
-        display: inline-block;
-        margin: 0.5rem 0.8rem;
-      }
+    .footer-fullwidth h2 {
+      margin-bottom: 1rem;
+    }
+
+    .footer-fullwidth input,
+    .footer-fullwidth button {
+      padding: 0.7rem;
+      border-radius: 6px;
+      border: none;
+    }
+
+    .footer-fullwidth button {
+      background-color: #01ccff;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-top: 2rem;
+    }
+
+    .footer-links div {
+      min-width: 180px;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+      margin-top: 2rem;
     }
   </style>
 </head>
@@ -235,111 +226,128 @@
 </section>
 
 <section id="produk">
-  <h1 style="text-align:center; font-size: 2.5rem; font-weight: bold; letter-spacing:2px;">
-    Produk Unggulan
-  </h1>
+  <h1 style="text-align:center; font-size: 2.5rem; margin-bottom: 2rem;">Produk Unggulan</h1>
   <div class="produk-grid">
-<div class="produk-grid">
-  <div class="produk-kiri">
-    <img class="produk-img" src="blue point.jpg" alt="BSP Blue Point">
-    <div class="produk-notes">
-      <h3>BSP Blue Point</h3>
-      <p><strong>Top Notes:</strong> Citrus, Fruity, Oceanic</p>
-      <p><strong>Middle Notes:</strong> Floral, Spicy, Marine</p>
-      <p><strong>Base Notes:</strong> Musk, Woody</p>
-      <p><strong>Harga:</strong> Rp 225.000</p>
+    <!-- Semua produk dimasukkan di sini -->
+    <div class="produk-kiri">
+      <img class="produk-img" src="blue point.jpg" alt="BSP Blue Point">
+      <div class="produk-notes">
+        <h3>BSP Blue Point</h3>
+        <p><strong>Top Notes:</strong> Citrus, Fruity, Oceanic</p>
+        <p><strong>Middle Notes:</strong> Floral, Spicy, Marine</p>
+        <p><strong>Base Notes:</strong> Musk, Woody</p>
+        <p><strong>Harga:</strong> Rp 225.000</p>
+      </div>
     </div>
-  </div>
-
-  <div class="produk-kanan">
-    <div class="produk-notes">
-      <h3>LV Imagination</h3>
-      <p><strong>Top Notes:</strong> Calabrian Bergamot, Sicilian Orange, Nigerian Ginger</p>
-      <p><strong>Middle Notes:</strong> Tunisian Neroli, Ceylon Cinnamon, Black Tea</p>
-      <p><strong>Base Notes:</strong> Ambrox, Gaiac Wood</p>
-      <p><strong>Harga:</strong> Rp 7.750.000</p>
+    <div class="produk-kanan">
+      <div class="produk-notes">
+        <h3>LV Imagination</h3>
+        <p><strong>Top Notes:</strong> Calabrian Bergamot, Sicilian Orange, Nigerian Ginger</p>
+        <p><strong>Middle Notes:</strong> Tunisian Neroli, Ceylon Cinnamon, Black Tea</p>
+        <p><strong>Base Notes:</strong> Ambrox, Gaiac Wood</p>
+        <p><strong>Harga:</strong> Rp 7.750.000</p>
+      </div>
+      <img class="produk-img" src="lvimagination.jpg" alt="LV Imagination">
     </div>
-    <img class="produk-img" src="lvimagination.jpg" alt="LV Imagination">
-  </div>
-
-  <div class="produk-kiri">
-    <img class="produk-img" src="blue.jpg" alt="Mykonos California Blue">
-    <div class="produk-notes">
-      <h3>Mykonos California Blue</h3>
-      <p><strong>Top Notes:</strong> Lavender, Pear, Grapefruit, Pink Salt</p>
-      <p><strong>Middle Notes:</strong> Rhubarb, Water Blossoms, Marine Notes</p>
-      <p><strong>Base Notes:</strong> Moss, Softwood, Caramel</p>
-      <p><strong>Harga:</strong> Rp 229.000</p>
+    <div class="produk-kiri">
+      <img class="produk-img" src="blue.jpg" alt="Mykonos California Blue">
+      <div class="produk-notes">
+        <h3>Mykonos California Blue</h3>
+        <p><strong>Top Notes:</strong> Lavender, Pear, Grapefruit, Pink Salt</p>
+        <p><strong>Middle Notes:</strong> Rhubarb, Water Blossoms, Marine Notes</p>
+        <p><strong>Base Notes:</strong> Moss, Softwood, Caramel</p>
+        <p><strong>Harga:</strong> Rp 229.000</p>
+      </div>
     </div>
-  </div>
-
-  <div class="produk-kanan">
-    <div class="produk-notes">
-      <h3>Versace Eros</h3>
-      <p><strong>Top Notes:</strong> Mint, Green Apple, Lemon</p>
-      <p><strong>Middle Notes:</strong> Tonka Bean, Geranium, Ambroxan</p>
-      <p><strong>Base Notes:</strong> Vanilla, Vetiver, Oakmoss, Cedar</p>
-      <p><strong>Harga:</strong> Rp 1.350.000</p>
+    <div class="produk-kanan">
+      <div class="produk-notes">
+        <h3>Versace Eros</h3>
+        <p><strong>Top Notes:</strong> Mint, Green Apple, Lemon</p>
+        <p><strong>Middle Notes:</strong> Tonka Bean, Geranium, Ambroxan</p>
+        <p><strong>Base Notes:</strong> Vanilla, Vetiver, Oakmoss, Cedar</p>
+        <p><strong>Harga:</strong> Rp 1.350.000</p>
+      </div>
+      <img class="produk-img" src="eros.jpg" alt="Versace Eros">
     </div>
-    <img class="produk-img" src="eros.jpg" alt="Versace Eros">
-  </div>
-
-  <div class="produk-kiri">
-    <img class="produk-img" src="ice.jpg" alt="Rasasi Hawas Ice">
-    <div class="produk-notes">
-      <h3>Rasasi Hawas Ice</h3>
-      <p><strong>Top Notes:</strong> Bergamot, Lemon, Apple</p>
-      <p><strong>Middle Notes:</strong> Cardamom, Orange Blossom, Plum</p>
-      <p><strong>Base Notes:</strong> Ambergris, Musk, Patchouli</p>
-      <p><strong>Harga:</strong> Rp 950.000</p>
+    <div class="produk-kiri">
+      <img class="produk-img" src="ice.jpg" alt="Rasasi Hawas Ice">
+      <div class="produk-notes">
+        <h3>Rasasi Hawas Ice</h3>
+        <p><strong>Top Notes:</strong> Bergamot, Lemon, Apple</p>
+        <p><strong>Middle Notes:</strong> Cardamom, Orange Blossom, Plum</p>
+        <p><strong>Base Notes:</strong> Ambergris, Musk, Patchouli</p>
+        <p><strong>Harga:</strong> Rp 950.000</p>
+      </div>
     </div>
-  </div>
-
-  <div class="produk-kanan">
-    <div class="produk-notes">
-      <h3>Blue Seduction</h3>
-      <p><strong>Top Notes:</strong> Bergamot, Melon, Mint, Black Currant</p>
-      <p><strong>Middle Notes:</strong> Ocean Accord, Cardamom, Nutmeg, Cappuccino</p>
-      <p><strong>Base Notes:</strong> Amber, Musk, Woodsy Notes</p>
-      <p><strong>Harga:</strong> Rp 450.000</p>
+    <div class="produk-kanan">
+      <div class="produk-notes">
+        <h3>Blue Seduction</h3>
+        <p><strong>Top Notes:</strong> Bergamot, Melon, Mint, Black Currant</p>
+        <p><strong>Middle Notes:</strong> Ocean Accord, Cardamom, Nutmeg, Cappuccino</p>
+        <p><strong>Base Notes:</strong> Amber, Musk, Woodsy Notes</p>
+        <p><strong>Harga:</strong> Rp 450.000</p>
+      </div>
+      <img class="produk-img" src="seduction.jpg" alt="Blue Seduction">
     </div>
-    <img class="produk-img" src="seduction.jpg" alt="Blue Seduction">
-  </div>
-
-  <div class="produk-kiri">
-    <img class="produk-img" src="nautica.jpg" alt="Nautica Voyage">
-    <div class="produk-notes">
-      <h3>Nautica Voyage</h3>
-      <p><strong>Top Notes:</strong> Green Leaves, Apple</p>
-      <p><strong>Middle Notes:</strong> Lotus, Mimosa</p>
-      <p><strong>Base Notes:</strong> Musk, Cedar, Oakmoss, Amber</p>
-      <p><strong>Harga:</strong> Rp 350.000</p>
+    <div class="produk-kiri">
+      <img class="produk-img" src="nautica.jpg" alt="Nautica Voyage">
+      <div class="produk-notes">
+        <h3>Nautica Voyage</h3>
+        <p><strong>Top Notes:</strong> Green Leaves, Apple</p>
+        <p><strong>Middle Notes:</strong> Lotus, Mimosa</p>
+        <p><strong>Base Notes:</strong> Musk, Cedar, Oakmoss, Amber</p>
+        <p><strong>Harga:</strong> Rp 350.000</p>
+      </div>
     </div>
-  </div>
-</div>
   </div>
 </section>
 
 <section id="about">
-  <div style="max-width:800px; margin:0 auto 3rem auto; text-align:center;">
-    <h1 style="color:#01ccff; margin-bottom:1.5rem;">Mengapa Memilih Kami?</h1>
-    <p style="color:#fff; font-size:1.2rem; line-height:1.7;">
-      Kami percaya setiap aroma adalah bagian dari cerita hidup.  
-      <br><br>
-      Pilihan parfum kami dikurasi untuk berbagai kepribadian dan suasana hati, mulai dari aroma segar, maskulin, feminin, hingga eksotis.  
-      <br><br>
-      Nikmati pengalaman belanja parfum yang mudah, aman, dan penuh inspirasi.  
-      <br><br>
-      Temukan aroma favoritmu dan ekspresikan dirimu setiap hari!
-    </p>
-  </div>
+  <h1 style="color:#01ccff; margin-bottom:1.5rem;">Mengapa Memilih Kami?</h1>
+  <p>
+    Kami percaya setiap aroma adalah bagian dari cerita hidup.<br><br>
+    Pilihan parfum kami dikurasi untuk berbagai kepribadian dan suasana hati.<br><br>
+    Nikmati pengalaman belanja parfum yang mudah, aman, dan penuh inspirasi.
+  </p>
+
   <div class="footer-fullwidth">
-    <div style="max-width:1200px; margin:auto; text-align:center;">
-      <p>&copy; 2025 Fragrance World - All rights reserved.</p>
+    <h2>Subscribe to our newsletter</h2>
+    <form style="display:flex; flex-wrap:wrap; gap:1rem; max-width:500px; margin:auto;">
+      <input type="email" placeholder="Masukkan email Anda" style="flex:1;">
+      <button type="submit">Subscribe</button>
+    </form>
+
+    <div class="footer-links">
+      <div>
+        <h3>Nilai Kami</h3>
+        <p>Kualitas, keaslian, dan pelayanan terbaik</p>
+      </div>
+      <div>
+        <h3>Menu</h3>
+        <p><a href="#home" style="color:#ccc;">Home</a><br>
+           <a href="#produk" style="color:#ccc;">Produk</a><br>
+           <a href="#about" style="color:#ccc;">About</a></p>
+      </div>
+      <div>
+        <h3>Layanan</h3>
+        <p>Konsultasi Parfum<br>Gift Wrapping<br>Pengiriman<br>Promo</p>
+      </div>
+      <div>
+        <h3>Kontak</h3>
+        <p>Email: info@fragranceworld.com<br>
+           WA: 0812-3456-7890<br>
+           IG: @fragranceworld.id</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>©2025 Fragrance World - All rights reserved.</p>
+      <div>
+        <span>📷</span> <span>📱</span> <span>✉️</span>
+      </div>
     </div>
   </div>
 </section>
 
 </body>
 </html>
-
