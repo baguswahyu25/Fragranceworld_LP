@@ -8,6 +8,7 @@
       font-family: 'Open Sans', sans-serif;
       background-color: #000;
       color: #fff;
+      overflow-x: hidden;
     }
     header {
       background-color: rgb(0, 0, 0);
@@ -211,20 +212,35 @@
       padding: 3rem 2rem 2rem 2rem;
       margin-top: 3rem;
     }
-  @media (max-width: 768px) {
+@media (max-width: 768px) {
+  body, html {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  header, section, .footer-fullwidth {
+    width: 100% !important;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin: 0 auto;
+  }
+
   .produk-kiri,
   .produk-kanan {
     width: 100% !important;
+    max-width: 100% !important;
     flex-direction: column;
     align-items: center;
+    margin: 1rem auto;
     padding: 1rem;
-    box-sizing: border-box;
   }
 
   .produk-img {
     width: 90% !important;
-    height: auto !important;
-    margin-bottom: 1rem;
+    max-width: 320px;
+    height: auto;
   }
 
   .produk-notes {
@@ -232,59 +248,16 @@
     padding: 0 1rem;
   }
 
-  .hero-content h2 {
-    font-size: 2rem !important;
-  }
-
-  .hero-content p {
-    font-size: 1.1rem !important;
-  }
-
-  header {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 1rem;
-  }
-
-  nav {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    margin-top: 1rem;
-  }
-
-  nav a {
-    padding: 0.5rem 0;
-    margin: 0;
-  }
-
   .footer-fullwidth {
-    padding: 2rem 1rem !important;
-  }
-
-  .footer-fullwidth form {
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .footer-fullwidth input,
-  .footer-fullwidth button {
-    width: 100% !important;
-  }
-
-  .footer-fullwidth div[style*="display:flex; flex-wrap:wrap"] {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  .footer-fullwidth div[style*="display:flex; justify-content:space-between"] {
-    flex-direction: column;
-    text-align: center;
-    gap: 1rem;
+    left: 0 !important;
+    right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    border-radius: 0 !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
   }
 }
-
   </style>
 </head>
 <body>
